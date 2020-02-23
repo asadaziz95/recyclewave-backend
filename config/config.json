@@ -1,0 +1,14 @@
+{
+    "test":{
+        "PORT":3000,
+        "MONGODB_URI":"mongodb://localhost:27017/testing",
+        "JWT_SECRET":"MIDSdfsd432lfsdkfjfsd"
+
+    },
+    "development":{
+        "PORT":3000,
+        "MONGODB_URI":"mongodb://localhost:27017/recyclewave",
+        "JWT_SECRET":"MIDSdfsd432lfsdkfjfsd"
+    }
+   
+}
