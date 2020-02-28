@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const { User } = require("./../models/registerUser");
+const { User } = require("./../models/User");
 
 module.exports = function(app, database) {
   app.post("/user_signup", (req, res) => {
