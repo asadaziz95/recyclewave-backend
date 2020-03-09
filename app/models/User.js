@@ -64,10 +64,8 @@ UserSchema.methods.toJSON = function() {
     "_id",
     "email",
     "name",
-    "profilepicture",
-    "nic",
-    "mobilenumber",
-    "token"
+    "token",
+    "userType"
   ]);
 };
 
