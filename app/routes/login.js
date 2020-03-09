@@ -13,7 +13,7 @@ app.post('/login',(req,res)=>{
         res.status(200).send({'data':user,'token':token});
       });
     }).catch((e) => {  
-      res.status(400).send(e);
+      res.status(400).send("Email or password is wrong!");
     });
 })
 
