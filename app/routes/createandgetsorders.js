@@ -28,6 +28,32 @@ module.exports = function(app) {
     //    }
   });
 
+  app.post("/updateorder", (req, res) => {
+    var body = _.pick(req.body, [
+      "userId",
+      "name",
+      "type",
+      "amount",
+      "address",
+      "email",
+      "status"
+    ]);
+  //  var orders = new Createorder(body);
+    //   if(orders.travellingagencyid){
+    // orders
+    //   .save()
+    //   .then(order => {
+    //     console.log("order");
+    //     console.log(order);
+    //     res.send(order);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //     res.status(400).send("Order is not added");
+    //   });
+    //    }
+  });
+
   // app.get("/gettourlist", (req, res) => {
   //   var id = req.query.id;
   //   console.log(id);
@@ -46,7 +72,7 @@ module.exports = function(app) {
     console.log("req.params.id",req.params.id);
     Createorder.find({ userId: req.params.id })
       .then(orderslist => {
-        console.log(orderslist);
+        console.log("orderslist",orderslist);
         res.send(orderslist);
       })
       .catch(e => {
