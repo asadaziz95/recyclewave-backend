@@ -7,6 +7,9 @@ var CreateOrderSchema = new mongoose.Schema({
   userId:{
     type:String
   },
+  assigneeId:{
+    type:String
+  },
   name:{
     type: String
   },

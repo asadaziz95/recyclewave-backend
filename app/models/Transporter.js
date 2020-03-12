@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const bcrypt = require("bcryptjs");
 
-var UserSchema = new mongoose.Schema({
+var TransporterSchema = new mongoose.Schema({
   name: [
     {
       firstName: {
@@ -39,6 +39,9 @@ var UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  adminId:{
+    type:String
+  },
   tokens: [
     {
       access: {
@@ -53,7 +56,7 @@ var UserSchema = new mongoose.Schema({
   ]
 });
 
-UserSchema.methods.toJSON = function() {
+TransporterSchema.methods.toJSON = function() {
   var user = this;
   var userObject = user.toObject();
 
@@ -66,7 +69,7 @@ UserSchema.methods.toJSON = function() {
   ]);
 };
 
-UserSchema.methods.generateAuthToken = function() {
+TransporterSchema.methods.generateAuthToken = function() {
   var user = this;
   var access = "auth";
   var token = jwt
@@ -80,7 +83,7 @@ UserSchema.methods.generateAuthToken = function() {
   });
 };
 
-UserSchema.statics.findByToken = function(token) {
+TransporterSchema.statics.findByToken = function(token) {
   var user = this;
   var decoded;
   try {
@@ -96,7 +99,7 @@ UserSchema.statics.findByToken = function(token) {
   });
 };
 
-UserSchema.pre("save", function(next) {
+TransporterSchema.pre("save", function(next) {
   var user = this;
 
   if (user.isModified("password")) {
@@ -111,7 +114,7 @@ UserSchema.pre("save", function(next) {
   }
 });
 
-UserSchema.statics.findByCredentials = function(email, password) {
+TransporterSchema.statics.findByCredentials = function(email, password) {
   var User = this;
   return User.findOne({ email }).then(user => {
     if (!user) {
@@ -129,7 +132,7 @@ UserSchema.statics.findByCredentials = function(email, password) {
   });
 };
 
-UserSchema.methods.removeToken = function(token) {
+TransporterSchema.methods.removeToken = function(token) {
   var user = this;
   return user.update({
     $pull: {
@@ -138,6 +141,6 @@ UserSchema.methods.removeToken = function(token) {
   });
 };
 
-var User = mongoose.model("User", UserSchema);
+var Transporter = mongoose.model("Transporter", TransporterSchema);
 
-module.exports = { User };
+module.exports = { Transporter };
