@@ -22,6 +22,9 @@ var CreateOrderSchema = new mongoose.Schema({
   address:{
     type:String
   },
+  mobileno:{
+    type:String
+  },
   status:{
     type:String
   },

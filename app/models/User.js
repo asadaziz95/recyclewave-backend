@@ -39,6 +39,9 @@ var UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  adminId:{
+    type:String
+  },
   tokens: [
     {
       access: {
