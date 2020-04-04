@@ -4,8 +4,9 @@ const { User } = require("./../models/User");
 
 module.exports = function(app, database) {
   app.post("/transpoter_signup", (req, res) => {
-    console.log("in transpoter_signup ");
-    var body = _.pick(req.body, ["email", "password", "name","userType","adminId"]);
+    console.log("in transpoter_signup ",req.body);
+    var body = _.pick(req.body, 
+      ["email", "password", "name","userType","adminId","licenseNumber"]);
     console.log("trans body",body);
     var user = new User(body);
 

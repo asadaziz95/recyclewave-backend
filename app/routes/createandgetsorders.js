@@ -66,6 +66,17 @@ module.exports = function (app) {
           res.status(400).send("No order is available");
         });
     }
+    else if(userType==='transporter') {
+      Createorder.find({ assigneeId: req.params.id })
+        .then(orderslist => {
+          console.log("orderslist", orderslist);
+          res.send(orderslist);
+        })
+        .catch(e => {
+          console.log(e);
+          res.status(400).send("No order is available");
+        });
+    }
     else {
       Createorder.find({ userId: req.params.id })
         .then(orderslist => {

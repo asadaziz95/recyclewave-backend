@@ -42,6 +42,9 @@ var TransporterSchema = new mongoose.Schema({
   adminId:{
     type:String
   },
+  licenseNumber:{
+    type:String
+  },
   tokens: [
     {
       access: {
@@ -65,7 +68,8 @@ TransporterSchema.methods.toJSON = function() {
     "email",
     "name",
     "token",
-    "userType"
+    "userType",
+    "licenseNumber"
   ]);
 };
 
